@@ -29,15 +29,18 @@ So maybe, KISS is the most important programming principle out there.
 
 ### Why Shoud I Care?
 
-If you've read your SICP (Structure and Interpretation of Computer Programs) book (and if you haven't you definitly should), then you already know, that there are thre elements of programming: 
+If you've read your SICP ("Structure and Interpretation of Computer Programs") book (and if you haven't you definitly [should](https://mitpress.mit.edu/sicp/)), then you already know, that there are [three elements of programming](https://mitpress.mit.edu/sicp/full-text/sicp/book/node5.html): 
 
 - **primitive expressions**, which represent the simplest entities the language is concerned with,
 - **means of combination**, by which compound elements are built from simpler ones, and
 - **means of abstraction**, by which compound elements can be named and manipulated as units.
 
-If done right, this three elements should lead to an environment, which will enable you to do, what i use to call ***"programming exponentially"***: An environemt where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing "cominability". 
+If done right, this three elements should lead to an environment, which will enable you to do, what i use to call **"programming exponentially"**: An environment where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing combinability. Where everything you do helps to do the next step more effecive and thus lead you to an ever increasing development-speed.
 
-Up to today, i never got there and i never found an environment where this became a reality.
+Up to today this never came true. I never got there and i never found an environment where this became a reality.
+Perhaps combineability never got to a level sufficient enough. And perhaps the reason this is that thing never were simple enough: After all you can combine things freely if you have simple building block at hand.
+
+BTW: If you don't like to read SICP you can watch some videos instead: [Youtube](https://www.youtube.com/watch?v=2Op3QLzMgSY)
 
 ### Simplicity ain't easy
 
