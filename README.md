@@ -6,7 +6,7 @@
 
 > -- a design principle noted by the U.S. Navy in 1960
 
-### Waht does Dijkstra say?
+### What does Dijkstra say?
 
 Well, if Dijkstra was right (and who dares to object that), simplicity seems to be a "crucial matter" in programming:
 
@@ -29,15 +29,15 @@ So maybe, KISS is the most important programming principle out there.
 
 ### Why Shoud I Care?
 
-Beacue to achive great things you need three things:
-
-If you've read your SICP (Structure and Interpretation of Computer Programs) book (and if you haven't you definitly should), then you already know that there are thre elements of programming: 
+If you've read your SICP (Structure and Interpretation of Computer Programs) book (and if you haven't you definitly should), then you already know, that there are thre elements of programming: 
 
 - **primitive expressions**, which represent the simplest entities the language is concerned with,
 - **means of combination**, by which compound elements are built from simpler ones, and
 - **means of abstraction**, by which compound elements can be named and manipulated as units.
 
-If done right, this three elements lead to an environment which gives you the aility for what i use to call ***"programming exponentially"***: An environemt where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing "cominability". Up to today, i never got there and i never found an environment where this became a reality.
+If done right, this three elements should lead to an environment, which will enable you to do, what i use to call ***"programming exponentially"***: An environemt where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing "cominability". 
+
+Up to today, i never got there and i never found an environment where this became a reality.
 
 ### Simplicity ain't easy
 
