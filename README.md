@@ -58,7 +58,7 @@ Fortunately there are two talks that help a lot to guide us out of this mess:
 2. [Simple Made Easy - Rich Hickey](https://www.infoq.com/presentations/Simple-Made-Easy)
 
 These talks state that "simple" does mean "not compound" or - as Rich puts it - "not complected".
-If we follow that, than maybe the KISS Principle is not only the most important, but also the most misunderstood principle out there. So let's take it seriously!
+If we follow that, than maybe the KISS Principle is not only the most important, but also the most misunderstood principle out there. So let's stick to it and get it right:
 
 > Stay consistent and you will start a revolution.
 >
