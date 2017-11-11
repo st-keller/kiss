@@ -45,6 +45,8 @@ But an other explanation may be, that combineability never got sufficienty good.
 > BTW: If you don't like to read SICP you can watch the lessons, starting with that one:
 >
 > [<img src="/images/sicp_lesson_1a.jpeg?raw=true">](https://www.youtube.com/watch?v=2Op3QLzMgSY)
+>
+> (Hal Abelson explains the three elements of programming (at [28:08](https://youtu.be/2Op3QLzMgSY?t=28m8s)) introducing them as "the most important thing in this course".)
 
 ### Simplicity ain't easy
 
