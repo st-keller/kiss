@@ -40,7 +40,7 @@ If done right, this three elements should lead to an environment, which will ena
 Up to today this never came true. I never got there and i never found an environment where this became a reality.
 Perhaps combineability never got to a level sufficient enough. And perhaps the reason this is that thing never were simple enough: After all you can combine things freely if you have simple building block at hand.
 
-BTW: If you don't like to read SICP you can watch some videos instead: [Youtube](https://www.youtube.com/watch?v=2Op3QLzMgSY)
+BTW: If you don't like to read SICP you can watch some videos instead: [<img src="/images/sicp_lesson_1a.jpeg?raw=true">](https://www.youtube.com/watch?v=2Op3QLzMgSY)
 
 ### Simplicity ain't easy
 
