@@ -6,7 +6,7 @@
 
 > -- a design principle noted by the U.S. Navy in 1960
 
-### Why Do We Care?
+### Waht does Dijkstra say?
 
 Well, if Dijkstra was right (and who dares to object that), simplicity seems to be a "crucial matter" in programming:
 
@@ -27,6 +27,18 @@ Well, if Dijkstra was right (and who dares to object that), simplicity seems to 
 Simplicity is at the heart of the KISS Principle (every known version of the KISS-Acronym contains the word "simple").
 So maybe, KISS is the most important programming principle out there.
 
+### Why Shoud I Care?
+
+Beacue to achive great things you need three things:
+
+If you've read your SICP (Structure and Interpretation of Computer Programs) book (and if you haven't you definitly should), then you already know that there are thre elements of programming: 
+
+- **primitive expressions**, which represent the simplest entities the language is concerned with,
+- **means of combination**, by which compound elements are built from simpler ones, and
+- **means of abstraction**, by which compound elements can be named and manipulated as units.
+
+If done right, this three elements lead to an environment which gives you the aility for what i use to call ***"programming exponentially"***: An environemt where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing "cominability". Up to today, i never got there and i never found an environment where this became a reality.
+
 ### Simplicity ain't easy
 
 Contrary to intuition, the meaning of the word "simple" is astoundingliy difficult to nail down.
@@ -46,7 +58,7 @@ If we follow that, than maybe the KISS Principle is not only the most important,
 
 ## The Journey
 
-Equipped with trusted knowledge, we can start a journey now. Wherever it will lead us, according to Dijkstra we will face a lot of work and nearly no appreciation.
+Equipped with trusted knowledge, we can start a journey. Wherever it will lead us - according to Dijkstra - we will face a lot of work and nearly no appreciation.
 But if simplicity is such a great thing, we should be able to accomplish things we couldn't achieve before, and boldly go where no man has gone before.
 And if we go astray, we can always step back or start anew.
 
