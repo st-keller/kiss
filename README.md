@@ -38,9 +38,9 @@ If you've read your SICP ("Structure and Interpretation of Computer Programs") b
 If done right, this three elements should lead to an environment, which will enable you to do, what i use to call **"programming exponentially"**: An environment where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing combinability. Where everything you do helps to do the next step more effectivly and so gives you an ever increasing development-speed.
 
 Up to today this never worked. Neither did I get this "ever increasing speed' nor did i ever find such an environment.
-Perhaps such a thing is just impossible. Then ther is no hope.
+Perhaps such a thing is just impossible and there is nothing to hope for.
 
-But an other explanation may be, that combineability never got sufficienty good. And maybe things never were simple enough to allow this: After all you can combine things freely if and only if you have verey simple building blocks at hand.
+An other explanation may be, that combineability never was taken serioulsy and never got sufficienty good enough. And maybe things never were simple enough to allow for this: After all you can combine things freely if and only if you have verey simple building blocks at hand. That's exactly why we should care about simplicity!
 
 > BTW: If you don't like to read SICP you can watch the lessons, starting with that one:
 >
