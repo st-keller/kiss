@@ -3,7 +3,7 @@
 ## The KISS Principle
 
 > KISS - "Keep it simple stupid."
-
+>
 > -- a design principle noted by the U.S. Navy in 1960
 
 ### What does Dijkstra say?
@@ -11,17 +11,17 @@
 Well, if Dijkstra was right (and who dares to object that), simplicity seems to be a "crucial matter" in programming:
 
 > Simplicity is prerequisite for reliability.
-
+>
 > -- Dijkstra (1975) [How do we tell truths that might hurt?](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD04xx/EWD498.html) (EWD498)
 
 > How do we convince people that in programming simplicity and clarity —in short: what mathematicians call "elegance"— are not a
 > dispensable luxury, but a crucial matter that decides between success and failure?
-
+>
 > -- Dijkstra [Why is software so expensive?](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD06xx/EWD648.html) (EWD648).
 
 > Simplicity is a great virtue but it requires hard work to achieve it and education to appreciate it. And to make matters worse:
 > complexity sells better.
-
+>
 > -- Dijkstra (1984) [On the nature of Computing Science](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html) (EWD896).
 
 Simplicity is at the heart of the KISS Principle (every known version of the KISS-Acronym contains the word "simple").
@@ -35,12 +35,16 @@ If you've read your SICP ("Structure and Interpretation of Computer Programs") b
 - **means of combination**, by which compound elements are built from simpler ones, and
 - **means of abstraction**, by which compound elements can be named and manipulated as units.
 
-If done right, this three elements should lead to an environment, which will enable you to do, what i use to call **"programming exponentially"**: An environment where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing combinability. Where everything you do helps to do the next step more effecive and thus lead you to an ever increasing development-speed.
+If done right, this three elements should lead to an environment, which will enable you to do, what i use to call **"programming exponentially"**: An environment where everything you create can be combined easily with every other thing already created (given the same abstraction-level). An environment where you can build a higher abstraction-Level without loosing combinability. Where everything you do helps to do the next step more effectivly and so gives you an ever increasing development-speed.
 
-Up to today this never came true. I never got there and i never found an environment where this became a reality.
-Perhaps combineability never got to a level sufficient enough. And perhaps the reason this is that thing never were simple enough: After all you can combine things freely if you have simple building block at hand.
+Up to today this never worked. Neither did I get this "ever increasing speed' nor did i ever find such an environment.
+Perhaps such a thing is just impossible. Then ther is no hope.
 
-BTW: If you don't like to read SICP you can watch some videos instead: [<img src="/images/sicp_lesson_1a.jpeg?raw=true">](https://www.youtube.com/watch?v=2Op3QLzMgSY)
+But an other explanation may be, that combineability never got sufficienty good. And maybe things never were simple enough to allow this: After all you can combine things freely if and only if you have verey simple building blocks at hand.
+
+> BTW: If you don't like to read SICP you can watch the lessons, starting with that one:
+>
+> [<img src="/images/sicp_lesson_1a.jpeg?raw=true">](https://www.youtube.com/watch?v=2Op3QLzMgSY)
 
 ### Simplicity ain't easy
 
@@ -55,7 +59,7 @@ These talks state that "simple" does mean "not compound" or - as Rich puts it - 
 If we follow that, than maybe the KISS Principle is not only the most important, but also the most misunderstood principle out there. So let's take it seriously!
 
 > Stay consistent and you will start a revolution.
-
+>
 > -- unknown
 
 
