@@ -98,9 +98,11 @@ I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - s
 ~~The most simple thing we can do is giving the window a certain background-color and provide means to change it.~~
 Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because fonts and glyphs ain't simple either!
 
-So we start anew with dimension 0: A Point - the we'll do two points and advance to dimension 1: A Line!
+So we start anew with dimension 0: **A Point!**
 
-Let's see how this will turn out!
+Then we'll do two points and after that advance to dimension 1: **A Line!**
+
+That will be a lot of work - so let's see how this will turn out!
 
 
 
