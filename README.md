@@ -81,7 +81,7 @@ But layouting text isn't simple either. So a lot more humble thing (even if emba
 
 For every step I'll try to do three things:
 1. Write a program that shows something.
-2. Extend the program so that a user may change what we show (remeber? We want build an editor!)
+2. Extend the program so that a user may change what we created (remeber? We want build an editor!)
 3. The KISS (refactor the program to ensure that everything is done in a "simple way").
 
 Every journey starts with the ...
@@ -93,35 +93,14 @@ Maybe one, that does only one thing?
 
 Well that's not so easy:  Even if you try to build a program that does "nothing", most IDEs will create one with lot's of stuff around.
 
-I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - so i havn't got any habits doing it) and if you create a program for macOS it will have at least a menu and a window. Instead of trying to get rid of those, we'll just ignore the window and the menu and focus on the content of the window:
-The most simple thing we can do is giving the window a certain background-color and provide means to change it.
+I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - so i havn't got any habits doing it) and if you create a program for macOS it will have at least a menu and a window. Instead of trying to get rid of those, we'll just ignore the window and the menu and focus on the content of the window!
 
-So that's what will do as an impressive first step:
+~~The most simple thing we can do is giving the window a certain background-color and provide means to change it.~~
+Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because fonts and glyphs ain't simple either!
 
-1.1: Creating a program that shows a window and set's it's background-color:
+So we start anew with dimension 0: A Point - the we'll do two points and advance to dimension 1: A Line!
 
-(Screencast "kiss_1_1" - coming soon)
-
-1.2: Extending the program so that a user can chnage the background color!
-
-(Screencast "kiss_1_2" - coming soon)
-
-1.3: KISS it!
-
-(Screencast "kiss_1_3" - coming soon)
-
-For this kiss we take [re-frame](https://github.com/Day8/re-frame)'s approach of "Derived Values, Flowing" as an inspiration.
-If you don't already know [re-frame](https://github.com/Day8/re-frame), take some time and take a deep dive into it's README - it's a long read but definitely worth every word!
-
-
-### 2. Step
-
-2.1 Display a shape
-
-2.2 Let a user change the shape's properties
-
-2.3 KISS it
-
+Let's see how this will turn out!
 
 
 
