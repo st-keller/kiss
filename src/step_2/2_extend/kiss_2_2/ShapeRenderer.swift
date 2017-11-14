@@ -34,19 +34,25 @@ extension NSBezierPath {
 
 class ShapeRenderer : NSView, Renderer {
     
+    //possible states:
+    
+    Path
+    
+    
+    
     // see https://www.youtube.com/watch?v=sdEK8-0yLds
     
     // to use a flipped coordinate system do it like this:
     override var isFlipped: Bool { return true; }
     
     let cfChar = "Y" as CFString
-    let ctFont = CTFontCreateWithNameAndOptions("HelveticaNeue" as CFString, 50, nil, CTFontOptions.preferSystemFont)
+    var ctFont = CTFontCreateWithNameAndOptions("HelveticaNeue" as CFString, 50, nil, CTFontOptions.preferSystemFont)
     
     //draw a shape
     let shapelayer = CAShapeLayer()
     
     var editModeState: Bool?
-    var font: NSFont?
+    //var font: NSFont?
     
     func setUp() -> [String : Data] {
         defineLayer()
@@ -58,8 +64,8 @@ class ShapeRenderer : NSView, Renderer {
     }
     
     func render(data: [String : Data]) {
-        //updateFont(data: data["font"])
-        //updateEditMode(data: data["inEditMode"])
+        updateFont(data: data["font"])
+        updateEditMode(data: data["inEditMode"])
     }
     
     func tearDown() {
@@ -87,6 +93,19 @@ class ShapeRenderer : NSView, Renderer {
         
     }
     
+    // Override the NSView mouseDown func to read information about a mouse-click
+    override func mouseDown(with theEvent : NSEvent) {
+        Swift.print("left mouse")
+        let mousePoint = self.convert(theEvent.locationInWindow, from: nil)
+        if (shapelayer.path?.contains(mousePoint))! {
+            Swift.print("HIT!!!")
+        }
+    }
+    
+    override func rightMouseDown(with theEvent : NSEvent) {
+        Swift.print("right mouse")
+    }
+    
     // Override the NSView keydown func to read keycode of pressed key
     override func keyDown(with theEvent: NSEvent)
     {
@@ -106,13 +125,11 @@ class ShapeRenderer : NSView, Renderer {
         if ( data == nil) { return }
         
         let newFont = (NSKeyedUnarchiver.unarchiveObject(with: data!)) as? NSFont
-        if (newFont != nil && newFont != font) {
-            font = newFont!
+        if (newFont != nil) {//} && newFont != font) {
+            ctFont =  CTFontCreateWithNameAndOptions(newFont!.fontName as CFString, newFont!.pointSize, nil, CTFontOptions.preferSystemFont)
             
             //Symbol mit dem neuen Font zeichnen:
-            
-            
-            
+            defineLayer()
             
         }
     }
@@ -133,6 +150,17 @@ class ShapeRenderer : NSView, Renderer {
     
     private func showFontPanel() {
         //show a FontManager
+        
+//        NSFontManager * fontManager = [NSFontManager sharedFontManager];
+//        [fontManager setTarget:self];
+//        [fontManager setSelectedFont:[NSFont fontWithName:@"Helvetica" size:150.0]; isMultiple:NO];
+//        [fontManager orderFrontFontPanel:self];
+//
+        let fontManager = NSFontManager.shared
+        fontManager.target = self
+        fontManager.setSelectedFont(ctFont, isMultiple: false)
+        fontManager.action = #selector(self.createFontEvent)
+        fontManager.orderFrontFontPanel(self)
         
         //fontManager.action = Selector("changeFont:")
         
@@ -161,9 +189,14 @@ class ShapeRenderer : NSView, Renderer {
         //        }
     }
     
-    //    @objc func createColorEvent(sender: NSColorWell) {
-    //        Dispatcher.newEvent(event: "background", data: NSKeyedArchiver.archivedData(withRootObject: sender.color))
-    //    }
+    @objc func createFontEvent(sender: NSFontManager) {
+        let selectedFont = sender.selectedFont;
+        if (selectedFont != nil)
+        {
+            Dispatcher.newEvent(event: "font", data: NSKeyedArchiver.archivedData(withRootObject: selectedFont!))
+        }
+        
+    }
     //
     
     
