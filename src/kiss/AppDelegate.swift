@@ -8,31 +8,59 @@
 
 import Cocoa
 
+//extension NSView {
+//    var currentContext : CGContext {
+//        get {
+//            // 10.9 doesn't have a reasonable call for getting the current context
+//            // that doesn't require jumping through ever-changing opaque pointers.
+//            let context = NSGraphicsContext.current
+//            return context!.cgContext
+//        }
+//    }
+//
+//    func protectGState(_ drawStuff : () -> Void) {
+//        currentContext.saveGState ()
+//        drawStuff()
+//        currentContext.restoreGState ()
+//    }
+//}
 
-extension NSView {
-    var currentContext : CGContext {
-        get {
-            // 10.9 doesn't have a reasonable call for getting the current context
-            // that doesn't require jumping through ever-changing opaque pointers.
-            let context = NSGraphicsContext.current
-            return context!.cgContext
-        }
+//let json = JSON(from: "{ \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 } }")
+
+//let json = JSON(from: "{ \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } } }")
+
+let json = JSON(from: "{ \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } }, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 } }")
+
+
+let drawingArea = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 667.0)
+let shape = ShapeBuilder(by: json).build();
+
+class MasterView: NSView {
+    init(draw: @escaping (CGContext)->()) {
+        super.init(frame: drawingArea)
+        self.draw = draw
+        self.setNeedsDisplay(drawingArea)
     }
     
-    func protectGState(_ drawStuff : () -> Void) {
-        currentContext.saveGState ()
-        drawStuff()
-        currentContext.restoreGState ()
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
     }
+    
+    override func draw(_ bounds: CGRect) {
+        let context = (NSGraphicsContext.current)!.cgContext
+        context.saveGState()
+        draw(context)
+        context.restoreGState()
+    }
+    var draw: (CGContext)->() = { _ in () }
 }
-
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
-    let mainView = PointRenderer(frame: NSMakeRect(0, 0, 1, 1))
+    
+    let mainView = MasterView() { shape.draw(into: $0) }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application

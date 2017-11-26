@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		A84C5B451FBCDC200098A157 /* AppCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C5B441FBCDC200098A157 /* AppCycle.swift */; };
 		A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C5B461FBCDDB20098A157 /* BezierCurve.swift */; };
-		A8CD5D601FBB8F1800E06538 /* PointRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CD5D5F1FBB8F1800E06538 /* PointRenderer.swift */; };
+		A85FE16C1FC9607900129FE8 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FE16B1FC9607900129FE8 /* Shape.swift */; };
+		A8CE6ADA1FCA253C001C2A8D /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CE6AD91FCA253C001C2A8D /* Channels.swift */; };
+		A8E56CAF1FCAFEA600884402 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E56CAE1FCAFEA600884402 /* JSON.swift */; };
 		F8C4CC6B1FBB7642001607A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */; };
 		F8C4CC6D1FBB7642001607A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C4CC6C1FBB7642001607A9 /* Assets.xcassets */; };
 		F8C4CC701FBB7642001607A9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C4CC6E1FBB7642001607A9 /* MainMenu.xib */; };
@@ -18,7 +20,9 @@
 /* Begin PBXFileReference section */
 		A84C5B441FBCDC200098A157 /* AppCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCycle.swift; sourceTree = "<group>"; };
 		A84C5B461FBCDDB20098A157 /* BezierCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierCurve.swift; sourceTree = "<group>"; };
-		A8CD5D5F1FBB8F1800E06538 /* PointRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRenderer.swift; sourceTree = "<group>"; };
+		A85FE16B1FC9607900129FE8 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		A8CE6AD91FCA253C001C2A8D /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
+		A8E56CAE1FCAFEA600884402 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F8C4CC671FBB7642001607A9 /* kiss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8C4CC6C1FBB7642001607A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,13 +62,15 @@
 			isa = PBXGroup;
 			children = (
 				F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */,
+				A8CE6AD91FCA253C001C2A8D /* Channels.swift */,
+				A8E56CAE1FCAFEA600884402 /* JSON.swift */,
+				A85FE16B1FC9607900129FE8 /* Shape.swift */,
 				F8C4CC6C1FBB7642001607A9 /* Assets.xcassets */,
 				F8C4CC6E1FBB7642001607A9 /* MainMenu.xib */,
 				F8C4CC711FBB7642001607A9 /* Info.plist */,
 				F8C4CC721FBB7642001607A9 /* kiss.entitlements */,
-				A8CD5D5F1FBB8F1800E06538 /* PointRenderer.swift */,
-				A84C5B461FBCDDB20098A157 /* BezierCurve.swift */,
 				A84C5B441FBCDC200098A157 /* AppCycle.swift */,
+				A84C5B461FBCDDB20098A157 /* BezierCurve.swift */,
 			);
 			path = kiss;
 			sourceTree = "<group>";
@@ -141,7 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C4CC6B1FBB7642001607A9 /* AppDelegate.swift in Sources */,
-				A8CD5D601FBB8F1800E06538 /* PointRenderer.swift in Sources */,
+				A85FE16C1FC9607900129FE8 /* Shape.swift in Sources */,
+				A8CE6ADA1FCA253C001C2A8D /* Channels.swift in Sources */,
+				A8E56CAF1FCAFEA600884402 /* JSON.swift in Sources */,
 				A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */,
 				A84C5B451FBCDC200098A157 /* AppCycle.swift in Sources */,
 			);

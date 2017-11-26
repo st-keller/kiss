@@ -96,11 +96,19 @@ Well that's not so easy:  Even if you try to build a program that does "nothing"
 I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - so i havn't got any habits doing it) and if you create a program for macOS it will have at least a menu and a window. Instead of trying to get rid of those, we'll just ignore the window and the menu and focus on the content of the window!
 
 ~~The most simple thing we can do is giving the window a certain background-color and provide means to change it.~~
-Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because fonts and glyphs ain't simple either!
+Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because dealing with fonts and glyphs ain't easy either!
 
 So we start anew with dimension 0: **A Point!**
 
+The point is likely to become a "primitive element" of our system.
+Furthermore we have to define a way to abstract away these combined points into an new unit called **"a form"**.
+As a way to combine points and we will need something to position and group these forms which we will call a **"space"**.
+This space will introduce a "geometry" into our system, most important: A projection and size.
+Additionaly it may be used as a host for something called an "anchor-point", coloring- and arrangement-rules.
+
 Then we'll do two points and after that advance to dimension 1: **A Line!**
+
+
 
 That will be a lot of work - so let's see how this will turn out!
 
