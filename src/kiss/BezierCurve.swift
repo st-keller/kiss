@@ -14,8 +14,6 @@
 //    case bezierCurve
 //}
 //
-//
-//
 //class BezierCurve: NSView {
 //
 //    var draggingIndex: Int?

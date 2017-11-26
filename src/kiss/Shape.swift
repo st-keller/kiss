@@ -50,8 +50,8 @@ struct Shape : Drawable {
         }
     }
     
-    mutating func add(other: Drawable?) {
-        if (other != nil) { elements.append(other!) }
+    mutating func add(other: Drawable) {
+        elements.append(other)
     }
     
     //strokeColor
@@ -94,17 +94,13 @@ class ShapeBuilder {
 
     func build() -> Shape {
         var result: Shape = Shape()
-        for key in definition.keys! {
+        for key in definition.keys {
             let json = definition.jsonFor(key: key)
             switch key {
-                case "circle":
-                    result.add(other: Circle(json: json))
-                case "bezier":
-                    result.add(other: Bezier(json: json))
-                default:
-                    result.add(other: nil)
+                case "path":
+                    result.add(other: Path(json: json))
+                default: ()
             }
-            
         }
         return result
     }
@@ -125,7 +121,6 @@ struct Circle : Drawable {
         let rect = CGRect(x: center!.x - radius!, y: center!.y - radius!,
                           width: radius! * 2.0, height: radius! * 2.0);
         channel.ellipse(in: rect)
-        channel.strokePath()
     }
 }
 
@@ -145,7 +140,44 @@ struct Bezier : Drawable {
     func draw(into channel: Channel) {
         if (from != nil) { channel.move(to: from!) }
         channel.addCurve(to: to!, control1: ctrl1!, control2: ctrl2!)
+    }
+}
+
+struct Path : Drawable {
+    private var elements: [Drawable] = []
+    
+    private let color = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.222, 0.617, 0.976, 1.0])!
+    
+    private var lineWidth: CGFloat = 3.0
+
+    init(json: JSON) {
+        for key in json.keys {
+            switch key {
+                case "circle":
+                    elements.append(Circle(json: json.jsonFor(key: key)))
+                case "bezier":
+                    elements.append(Bezier(json: json.jsonFor(key: key)))
+//                case "color":
+//                    color = json.cgFloat(key: key)
+                case "lineWidth":
+                    let lw = json.cgFloat(key: key)
+                    if (lw != nil) { lineWidth = lw! }
+                default: ()
+            }
+        }
+    }
+    
+    func draw(into channel: Channel) {
+        for f in elements {
+            f.draw(into: channel)
+        }
+        channel.setStrokeColor(color)
+        channel.setLineWidth(lineWidth)
         channel.strokePath()
     }
 }
+
+
+
+
 

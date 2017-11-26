@@ -39,7 +39,7 @@ class JSON {
         return JSON(by: nil)
     }
     
-    var keys: [String]? {
+    var keys: [String] {
         get {
             if let dict = json as? [String: Any] {
                 var temp: [String] = []
@@ -48,7 +48,7 @@ class JSON {
                 }
                 return temp
             }
-            return nil
+            return []
         }
     }
     

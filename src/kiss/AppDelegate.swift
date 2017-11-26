@@ -29,8 +29,9 @@ import Cocoa
 
 //let json = JSON(from: "{ \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } } }")
 
-let json = JSON(from: "{ \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } }, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 } }")
+//let json = JSON(from: "{ \"path\": { \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } }, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 } } }")
 
+let json = JSON(from: "{ \"path\": { \"lineWidth\": 2.0, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 }, \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } } } }")
 
 let drawingArea = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 667.0)
 let shape = ShapeBuilder(by: json).build();
