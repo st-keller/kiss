@@ -107,16 +107,16 @@ Turns out that color is a complicated thing. And the already started second step
 So we start anew with the following abstractions:
 
 First, we have define our "primitive elements" of our system, which we will name **drawables** (didn't find a better term).
-These elements have no properties besides beeing drawables.
+These elements have no properties besides beeing drawable.
 
 The frist abstraction will be a **stride**. This abstraction introduces properties like a "start", "end" and "length".
 
-The we'll be able to forma a **path** ("paths are made by walking").
-At this level we will strat to talk about "colors", "path-width" and "filling".
+The we'll be able to form a **path** ("paths are made by walking").
+At this level we will start to talk about "colors", "path-width" and "filling".
 
 And after that we will build **shapes** out of paths.
-Shapes will introduce a  projection-matrix - a kind of a "geometry".
+Shapes will introduce a projection-matrix - some kind of a "geometry", if you may.
 Additionaly it may be used as a host for something called an "anchor-point" and path-arrangement-rules.
 
-That will be a lot of work - so let's see how this will turn out!
+This will be a lot of work - so let's see how this will turn out!
 
