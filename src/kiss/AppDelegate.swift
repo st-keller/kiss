@@ -31,29 +31,84 @@ import Cocoa
 
 //let json = JSON(from: "{ \"path\": { \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } }, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 } } }")
 
-let json = JSON(from: "{ \"path\": { \"lineWidth\": 2.0, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 }, \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 175.0, \"y\": 20.0 }, \"control_1\": { \"x\": 330.0, \"y\": 275.0 }, \"control_2\": { \"x\": 150.0, \"y\": 371.0 } } } }")
+//let json = JSON(from: "{ \"path\": { \"lineWidth\": 2.0, \"circle\": { \"center\": { \"x\": 120.5, \"y\": 120.5 }, \"radius\": 50.75 }, \"bezier\": { \"from\": { \"x\": 17.0, \"y\": 400.0 }, \"to\": { \"x\": 375.0, \"y\": 20.0 }, \"control_1\": { \"x\": 130.0, \"y\": 475.0 }, \"control_2\": { \"x\": 150.0, \"y\": 271.0 } } } }")
+//let scene = SceneBuilder(by: json).build();
 
 let drawingArea = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 667.0)
-let shape = ShapeBuilder(by: json).build();
+
+var scene = Scene(by: SinglePath(by: CubicCurve(start: Point(x:17.0, y:400.0),
+                                                end: Point(x:375.0, y:20.0),
+                                                control1: Point(x: 130.0, y: 475.0),
+                                                control2: Point(x: 150.0, y:271.0)))
+                                .line(to: Point(x:20.0, y:20.0)))
+
 
 class MasterView: NSView {
-    init(draw: @escaping (CGContext)->()) {
+
+    var scene: Scene
+    
+    init(scene: Scene) {
+        self.scene = scene
         super.init(frame: drawingArea)
-        self.draw = draw
-        self.setNeedsDisplay(drawingArea)
     }
     
     required init?(coder decoder: NSCoder) {
+        self.scene = Scene()
         super.init(coder: decoder)
     }
     
+//    init(draw: @escaping (CGContext)->()) {
+//        super.init(frame: drawingArea)
+//        self.draw = draw
+//        self.setNeedsDisplay(drawingArea)
+//    }
+    
+//    required init?(coder decoder: NSCoder) {
+//        super.init(coder: decoder)
+//    }
+//
     override func draw(_ bounds: CGRect) {
         let context = (NSGraphicsContext.current)!.cgContext
         context.saveGState()
-        draw(context)
+        scene.draw(into: context)
         context.restoreGState()
     }
-    var draw: (CGContext)->() = { _ in () }
+    //var draw: (CGContext)->() = { _ in () }
+    
+    
+    override func mouseDown (with event: NSEvent) {
+//        let localPoint = convert(event.locationInWindow, from: nil)
+//
+//        for (index, point) in controlPoints.enumerated() {
+//            let box = boxForPoint(point).insetBy(dx: -10.0, dy: -10.0)
+//
+//            if box.contains(localPoint) {
+//                draggingIndex = index
+//                break
+//            }
+//        }
+    }
+
+    override func mouseDragged (with event: NSEvent) {
+//        let localPoint = convert(event.locationInWindow, from: nil)
+
+//
+//        guard let index = draggingIndex else { return }
+//
+//
+//        controlPoints[index] = localPoint
+        needsDisplay = true
+    }
+
+
+    override func mouseUp (with event: NSEvent) {
+//        draggingIndex = nil
+    }
+
+    
+    
+    
+    
 }
 
 @NSApplicationMain
@@ -61,7 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @IBOutlet weak var window: NSWindow!
     
-    let mainView = MasterView() { shape.draw(into: $0) }
+    let mainView = MasterView(scene: scene)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application

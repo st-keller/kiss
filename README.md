@@ -35,13 +35,19 @@ If you've read your SICP ("Structure and Interpretation of Computer Programs") b
 - **means of combination**, by which compound elements are built from simpler ones, and
 - **means of abstraction**, by which compound elements can be named and manipulated as units.
 
-If applied in the right way, this should enable you to **"program exponentially"**: In an environment where everything you create can easily be combined with every other thing already existing (given the same abstraction-level) and where you can build a higher abstraction-Level without loosing combinability, every step you do take should help to the next step more effectivly. So it should give you an ever increasing development-speed.
+The most important part without any doubt is the "abstraction". An abstraction is essential for higher level concepts, which in turn let us talk about things without  considering every single component they are made out of. The other two elements are those, you need to from an abstraction. And beacuse the primitve expressions are mostly already given, you have to put he most work and attentiveness into "combineability"!
+
+If applied in the right way (read "not [leaky](https://en.wikipedia.org/wiki/Leaky_abstraction)"), abstractions should enable you to **"program exponentially"**: In an environment where everything you create can easily be combined with every other thing already existing (given the same abstraction-level) and where you can build a higher abstraction-Level without loosing combinability, every step you do take should help to the next step more effectivly. So it should give you an ever increasing development-speed.
+
+In short: Ensure true combineabiltity to create meaningful abstractions!
 
 For technical progress as a whole this promise seems to hold true. But up to today this didn't work out for programming environments: Neither did I ever get this "ever increasing speed' nor did i ever find such an environment.
 
 Perhaps such a thing is just impossible and there is nothing to hope for.
 
-An other explanation may be, that combineability wasn't assessed at its true worth and never taken seriously. Maybe the YAGNI-principle ("You Ain't Gonna Need It") worked too well and a huge amount of work towards simplicity deemed not appropriate: After all you can combine things freely if and only if you have very simple building blocks at hand. That's exactly why we should care about simplicity!
+An other explanation may be, that combineability wasn't assessed at its true worth and never taken seriously enough. Maybe the YAGNI-principle ("You Ain't Gonna Need It") worked too well and a huge amount of work towards simplicity deemed not appropriate.
+
+But after all you can combine things freely if and only if you have truly simple building blocks at hand. That's exactly why we should care about simplicity!
 
 > BTW: If you don't like to read SICP, you can watch the lessons on youtube instead. You can start with that one:
 >
@@ -98,19 +104,19 @@ I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - s
 ~~The most simple thing we can do is giving the window a certain background-color and provide means to change it.~~
 Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because dealing with fonts and glyphs ain't easy either!
 
-So we start anew with dimension 0: **A Point!**
+So we start anew with the following abstractions:
 
-The point is likely to become a "primitive element" of our system.
-Furthermore we have to define a way to abstract away these combined points into an new unit called **"a form"**.
-As a way to combine points and we will need something to position and group these forms which we will call a **"space"**.
-This space will introduce a "geometry" into our system, most important: A projection and size.
-Additionaly it may be used as a host for something called an "anchor-point", coloring- and arrangement-rules.
+First, we have define our "primitive elements" of our system, which we will name **drawables** (didn't find a better term).
+These elements have no properties besides beeing drawables.
 
-Then we'll do two points and after that advance to dimension 1: **A Line!**
+The frist abstraction will be a **stride**. This abstraction introduces properties like a "start", "end" and "length".
 
+The we'll be able to forma a **path** ("paths are made by walking").
+At this level we will strat to talk about "colors", "path-width" and "filling".
 
+And after that we will build **shapes** out of paths.
+Shapes will introduce a  projection-matrix - a kind of a "geometry".
+Additionaly it may be used as a host for something called an "anchor-point" and path-arrangement-rules.
 
 That will be a lot of work - so let's see how this will turn out!
-
-
 
