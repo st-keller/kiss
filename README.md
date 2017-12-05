@@ -114,12 +114,12 @@ These elements have no properties besides beeing drawables.
 
 Then there may be a **stride**, which introduces properties like a "start", "end" and "length".
 
-Then we'll be able to form a **path** ("paths are made by walking").
+The we'll be able to form a **path** ("paths are made by walking").
 At this level we will start to talk about "colors", "path-width" and "filling".
 
 And after that we will build **shapes** out of paths.
-Shapes will introduce a  projection-matrix - a kind of a "geometry".
+Shapes will introduce a projection-matrix - some kind of a "geometry", if you may.
 Additionaly it may be used as a host for something called an "anchor-point" and path-arrangement-rules.
 
-That will be a lot of work - so let's see how this will turn out!
+This will be a lot of work - so let's see how this will turn out!
 
