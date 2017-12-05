@@ -8,88 +8,77 @@
 
 import Foundation
 
-protocol Stride : Plottable {
-    var start: Point {get}
-    var end: Point {get}
-    var controls: [Point] {get}
-    var length: CGFloat {get}
+protocol Stride : Sketchable {
+    var from: Position {get}
+    var to: Position {get}
+    var controls: [Position] {get}
+    var length: Number {get}
     
-    // plot to the end of the stride (without considering where we start from)
-    func plot(into context: CGContext)
-}
-
-extension Stride {
-    
-    func plotControlGraph(into context: CGContext)  {
-        for ctrl in controls {
-            context.addLine(to: ctrl.cgPoint())
-        }
-        context.addLine(to: end.cgPoint())
-    }
-
+    // sketch to the end of the stride (without considering where we start from)
+    func sketch(on canvas: Canvas)
 }
 
 struct Line : Stride {
 
-    let start: Point
-    let end: Point
-    let controls: [Point] = []
-    let length: CGFloat
+    let from: Position
+    let to: Position
+    let controls: [Position] = []
+    let length: Number
     
-    init(start: Point, end: Point) {
-        self.start = start
-        self.end = end
-        self.length = start.distance(to: end)
+    init(from: Position, to: Position) {
+        self.from = from
+        self.to = to
+        self.length = from.distance(to: to)
     }
     
-    func plot(into context: CGContext) {
-        context.addLine(to: end.cgPoint())
+    func sketch(on canvas: Canvas) {
+        canvas.addLine(to: to)
     }
     
 }
 
 struct QuadCurve : Stride {
     
-    let start: Point
-    let end: Point
-    let controls: [Point]
-    var length: CGFloat { get { return quadCurveLength() } }
+    let from: Position
+    let to: Position
+    let controls: [Position]
+    var length: Number { get { return quadCurveLength() } }
     
-    init(start: Point, end: Point, control: Point) {
-        self.start = start
-        self.end = end
+    init(from: Position, to: Position, control: Position) {
+        self.from = from
+        self.to = to
         self.controls = [control]
     }
     
-    func plot(into context: CGContext) {
-        context.addQuadCurve(to: end.cgPoint(), control: controls[0].cgPoint())
+    func sketch(on canvas: Canvas) {
+        canvas.addQuadCurve(to: to, control: controls[0])
     }
     
-    private func quadCurveLength() -> CGFloat {
-        var approxDist: CGFloat = 0
-        let approxSteps: CGFloat = 100
+    private func quadCurveLength() -> Number {
+        var approxDist: Number = 0
+        let approxSteps: Number = 100
         for i in 0..<Int(approxSteps) {
-            let t0 = CGFloat(i) / approxSteps
-            let t1 = CGFloat(i+1) / approxSteps
-            let a = quadCurvePoint(t: t0, p0: start, p1: end, c1: controls[0])
-            let b = quadCurvePoint(t: t1, p0: start, p1: end, c1: controls[0])
+            let t0 = Fraction(Number(i) / approxSteps)
+            let t1 = Fraction(Number(i+1) / approxSteps)
+            let a = quadCurvePoint(t: t0, p0: from, p1: to, c1: controls[0])
+            let b = quadCurvePoint(t: t1, p0: from, p1: to, c1: controls[0])
             approxDist += a.distance(to: b)
         }
         return approxDist
     }
     
-    private func quadCurvePoint(t: CGFloat, p0: Point, p1: Point, c1: Point) -> Point {
+    private func quadCurvePoint(t: Fraction, p0: Position, p1: Position, c1: Position) -> Position {
         let x = quadCurveValue(t: t, p0: p0.x, p1: p1.x, c1: c1.x)
         let y = quadCurveValue(t: t, p0: p0.y, p1: p1.y, c1: c1.y)
-        return Point(x: x, y: y)
+        return Position(x: x, y: y)
     }
     
-    private func quadCurveValue(t: CGFloat, p0: CGFloat, p1: CGFloat, c1: CGFloat) -> CGFloat {
-        var value: CGFloat = 0.0
+    private func quadCurveValue(t: Fraction, p0: Number, p1: Number, c1: Number) -> Number {
+        var value: Number = 0.0
         // (1-t)^2 * p0 + 2 * (1-t) * t * c1 + t^2 * p1
         value += pow(1-t, 2) * p0
         value += 2 * (1-t) * t * c1
-        value += pow(t, 2) * p1
+        value += (t**2) * p1
         return value
         
     }
@@ -99,47 +88,47 @@ struct QuadCurve : Stride {
 
 struct CubicCurve : Stride {
 
-    let start: Point
-    let end: Point
-    let controls: [Point]
-    var length: CGFloat { get { return cubicCurveLength() } }
+    let from: Position
+    let to: Position
+    let controls: [Position]
+    var length: Number { get { return cubicCurveLength() } }
     
-    init(start: Point, end: Point, control1: Point, control2: Point) {
-        self.start = start
-        self.end = end
+    init(from: Position, to: Position, control1: Position, control2: Position) {
+        self.from = from
+        self.to = to
         self.controls = [control1, control2]
     }
     
-    func plot(into context: CGContext) {
-        context.addCurve(to: end.cgPoint(), control1: controls[0].cgPoint(), control2: controls[1].cgPoint())
+    func sketch(on canvas: Canvas) {
+        canvas.addCubicCurve(to: to, control1: controls[0], control2: controls[1])
     }
     
-    private func cubicCurveLength() -> CGFloat {
-        var approxDist: CGFloat = 0
-        let approxSteps: CGFloat = 100
+    private func cubicCurveLength() -> Number {
+        var approxDist: Number = 0
+        let approxSteps: Number = 100
         for i in 0..<Int(approxSteps) {
-            let t0 = CGFloat(i) / approxSteps
-            let t1 = CGFloat(i+1) / approxSteps
-            let a = cubicCurvePoint(t: t0, p0: start, c1: controls[0], c2: controls[1], p1: end)
-            let b = cubicCurvePoint(t: t1, p0: start, c1: controls[0], c2: controls[1], p1: end)
+            let t0 = Fraction( Number(i) / approxSteps)
+            let t1 = Fraction( Number(i+1) / approxSteps)
+            let a = cubicCurvePoint(t: t0, p0: from, c1: controls[0], c2: controls[1], p1: to)
+            let b = cubicCurvePoint(t: t1, p0: from, c1: controls[0], c2: controls[1], p1: to)
             approxDist += a.distance(to: b)
         }
         return approxDist
     }
 
-    private func cubicCurvePoint(t: CGFloat, p0: Point, c1: Point, c2: Point, p1: Point) -> Point {
+    private func cubicCurvePoint(t: Fraction, p0: Position, c1: Position, c2: Position, p1: Position) -> Position {
         let x = cubicCurveValue(t: t, p0: p0.x, c1: c1.x, c2: c2.x, p1: p1.x)
         let y = cubicCurveValue(t: t, p0: p0.y, c1: c1.y, c2: c2.y, p1: p1.y)
-        return Point(x: x, y: y)
+        return Position(x: x, y: y)
     }
 
-    private func cubicCurveValue(t: CGFloat, p0: CGFloat, c1: CGFloat, c2: CGFloat, p1: CGFloat) -> CGFloat {
-        var value: CGFloat = 0.0
+    private func cubicCurveValue(t: Fraction, p0: Number, c1: Number, c2: Number, p1: Number) -> Number {
+        var value: Number = 0.0
         // (1-t)^3 * p0 + 3 * (1-t)^2 * t * c1 + 3 * (1-t) * t^2 * c2 + t^3 * p1
         value += pow(1-t, 3) * p0
         value += 3 * pow(1-t, 2) * t * c1
-        value += 3 * (1-t) * pow(t, 2) * c2
-        value += pow(t, 3) * p1
+        value += 3 * (1-t) * (t**2) * c2
+        value += (t**3) * p1
         return value
     }
 

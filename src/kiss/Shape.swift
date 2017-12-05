@@ -13,25 +13,25 @@ import Foundation
 // This Point is called the "AnchorPoint". It defines how a Shape should deal with a position.
 // We define it by two percentages
 struct AnchorPoint {
-    var x: CGFloat
-    var y: CGFloat
+    var x: Number
+    var y: Number
 }
 
 protocol Shape : Drawable {
     //var mode: ShapeMode {get set}
     var elements: [Drawable] { get }
-    //var size: CGSize {get}
+    //var size: Size {get}
     //var anchor: AnchorPoint { get }
-    //var matrix: CGAffineTransform { get }
+    //var matrix: TransformMatrix { get }
 
-    //func drawAt(into context: CGContext, at: Point)
+    //func drawAt(on canvas: Canvas, at: Position)
 }
 
 extension Shape {
-    func draw(into context: CGContext) {
-        context.protect {
+    func draw(on canvas: Canvas) {
+        canvas.protect {
             for e in elements {
-                e.draw(into: context)
+                e.draw(on: canvas)
             }
         }
     }
@@ -39,18 +39,18 @@ extension Shape {
 
 struct SimpleShape : Shape {
     let elements: [Drawable]
-    let size: CGSize
+    let size: Size
     let anchor: AnchorPoint
-    let matrix: CGAffineTransform
+    let matrix: TransformMatrix
     
     init(by path: Path) {
         self.elements = [path]
-        self.size = CGSize(width: 1.0, height: 1.0)
+        self.size = Size(width: 1.0, height: 1.0)
         self.anchor = AnchorPoint(x:0.5, y:0.5)
-        self.matrix = CGAffineTransform.identity
+        self.matrix = TransformMatrix.identity
     }
  
-    func drawAt(into context: CGContext, at: Point) {
+    func drawAt(on canvas: Canvas, at: Position) {
         
     }
 }
@@ -134,9 +134,9 @@ struct Scene : Shape {
 
     var elements: [Drawable] = []
 
-    func draw(into context: CGContext) {
+    func draw(on canvas: Canvas) {
         for f in elements {
-            f.draw(into: context)
+            f.draw(on: canvas)
         }
     }
     
@@ -365,7 +365,4 @@ struct Scene : Shape {
 ////    }
 ////}
 //
-//
-//
-//
-//
+

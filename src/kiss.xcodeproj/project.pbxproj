@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A82A5D181FD2DF0D004A9352 /* Plottable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D171FD2DF0D004A9352 /* Plottable.swift */; };
+		A82A5D181FD2DF0D004A9352 /* Sketchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D171FD2DF0D004A9352 /* Sketchable.swift */; };
 		A82A5D1A1FD2E036004A9352 /* Stride.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D191FD2E036004A9352 /* Stride.swift */; };
 		A82A5D1C1FD2E1B8004A9352 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D1B1FD2E1B8004A9352 /* Path.swift */; };
 		A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C5B461FBCDDB20098A157 /* BezierCurve.swift */; };
 		A85FE16C1FC9607900129FE8 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FE16B1FC9607900129FE8 /* Shape.swift */; };
+		A8E53B091FD6FD1E00111693 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E53B081FD6FD1E00111693 /* Numbers.swift */; };
+		A8E53B0B1FD7246D00111693 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E53B0A1FD7246D00111693 /* Canvas.swift */; };
+		A8E53B0E1FD7475400111693 /* Stylus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E53B0D1FD7475400111693 /* Stylus.swift */; };
 		A8E56CAF1FCAFEA600884402 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E56CAE1FCAFEA600884402 /* JSON.swift */; };
 		F8C4CC6B1FBB7642001607A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */; };
 		F8C4CC6D1FBB7642001607A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C4CC6C1FBB7642001607A9 /* Assets.xcassets */; };
@@ -19,11 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A82A5D171FD2DF0D004A9352 /* Plottable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plottable.swift; sourceTree = "<group>"; };
+		A82A5D171FD2DF0D004A9352 /* Sketchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sketchable.swift; sourceTree = "<group>"; };
 		A82A5D191FD2E036004A9352 /* Stride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stride.swift; sourceTree = "<group>"; };
 		A82A5D1B1FD2E1B8004A9352 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		A84C5B461FBCDDB20098A157 /* BezierCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierCurve.swift; sourceTree = "<group>"; };
 		A85FE16B1FC9607900129FE8 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		A8E53B081FD6FD1E00111693 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		A8E53B0A1FD7246D00111693 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		A8E53B0D1FD7475400111693 /* Stylus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylus.swift; sourceTree = "<group>"; };
 		A8E56CAE1FCAFEA600884402 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F8C4CC671FBB7642001607A9 /* kiss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8E53B0C1FD7360100111693 /* abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				A8E53B0A1FD7246D00111693 /* Canvas.swift */,
+				A8E53B081FD6FD1E00111693 /* Numbers.swift */,
+			);
+			path = abstraction;
+			sourceTree = "<group>";
+		};
 		F8C4CC5E1FBB7642001607A9 = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */,
-				A82A5D171FD2DF0D004A9352 /* Plottable.swift */,
+				A8E53B0C1FD7360100111693 /* abstraction */,
+				A82A5D171FD2DF0D004A9352 /* Sketchable.swift */,
+				A8E53B0D1FD7475400111693 /* Stylus.swift */,
 				A82A5D191FD2E036004A9352 /* Stride.swift */,
 				A82A5D1B1FD2E1B8004A9352 /* Path.swift */,
 				A85FE16B1FC9607900129FE8 /* Shape.swift */,
@@ -150,11 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C4CC6B1FBB7642001607A9 /* AppDelegate.swift in Sources */,
+				A8E53B0E1FD7475400111693 /* Stylus.swift in Sources */,
 				A82A5D1C1FD2E1B8004A9352 /* Path.swift in Sources */,
 				A85FE16C1FC9607900129FE8 /* Shape.swift in Sources */,
 				A82A5D1A1FD2E036004A9352 /* Stride.swift in Sources */,
+				A8E53B091FD6FD1E00111693 /* Numbers.swift in Sources */,
+				A8E53B0B1FD7246D00111693 /* Canvas.swift in Sources */,
 				A8E56CAF1FCAFEA600884402 /* JSON.swift in Sources */,
-				A82A5D181FD2DF0D004A9352 /* Plottable.swift in Sources */,
+				A82A5D181FD2DF0D004A9352 /* Sketchable.swift in Sources */,
 				A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
