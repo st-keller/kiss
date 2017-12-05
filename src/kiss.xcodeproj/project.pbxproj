@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A82A5D181FD2DF0D004A9352 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D171FD2DF0D004A9352 /* Drawable.swift */; };
+		A82A5D181FD2DF0D004A9352 /* Plottable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D171FD2DF0D004A9352 /* Plottable.swift */; };
 		A82A5D1A1FD2E036004A9352 /* Stride.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D191FD2E036004A9352 /* Stride.swift */; };
 		A82A5D1C1FD2E1B8004A9352 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A5D1B1FD2E1B8004A9352 /* Path.swift */; };
 		A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C5B461FBCDDB20098A157 /* BezierCurve.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A82A5D171FD2DF0D004A9352 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		A82A5D171FD2DF0D004A9352 /* Plottable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plottable.swift; sourceTree = "<group>"; };
 		A82A5D191FD2E036004A9352 /* Stride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stride.swift; sourceTree = "<group>"; };
 		A82A5D1B1FD2E1B8004A9352 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		A84C5B461FBCDDB20098A157 /* BezierCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierCurve.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				F8C4CC6A1FBB7642001607A9 /* AppDelegate.swift */,
-				A82A5D171FD2DF0D004A9352 /* Drawable.swift */,
+				A82A5D171FD2DF0D004A9352 /* Plottable.swift */,
 				A82A5D191FD2E036004A9352 /* Stride.swift */,
 				A82A5D1B1FD2E1B8004A9352 /* Path.swift */,
 				A85FE16B1FC9607900129FE8 /* Shape.swift */,
@@ -154,7 +154,7 @@
 				A85FE16C1FC9607900129FE8 /* Shape.swift in Sources */,
 				A82A5D1A1FD2E036004A9352 /* Stride.swift in Sources */,
 				A8E56CAF1FCAFEA600884402 /* JSON.swift in Sources */,
-				A82A5D181FD2DF0D004A9352 /* Drawable.swift in Sources */,
+				A82A5D181FD2DF0D004A9352 /* Plottable.swift in Sources */,
 				A84C5B471FBCDDB20098A157 /* BezierCurve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,9 @@
 
 import Foundation
 
+//typealias Number = CGFloat
+//typealias Context = CGContext
+
 extension CGContext  {
     
     func protect(_ drawStuff : () -> Void) {
@@ -21,11 +24,11 @@ extension CGContext  {
     }
 }
 
-protocol Drawable {
-    func draw(into context: CGContext)
+protocol Plottable {
+    func plot(into context: CGContext)
 }
 
-struct Point : Drawable {
+struct Point : Plottable {
     let x: CGFloat
     let y: CGFloat
     
@@ -44,27 +47,8 @@ struct Point : Drawable {
         return hypot(distX, distY) //eqiv. to "sqrt(distX * distX + distY * distY)"
     }
 
-    func draw(into context: CGContext) {
+    func plot(into context: CGContext) {
         context.move(to: self.cgPoint() )
-    }
-
-    func drawBox(into context: CGContext) {
-
-        let BoxSize: CGFloat = 4.0
-        
-        context.protect {
-            let rect = CGRect(x: self.x - BoxSize / 2.0,
-                              y: self.y - BoxSize / 2.0,
-                              width: BoxSize, height: BoxSize)
-            context.addEllipse(in: rect)
-            //color.set()
-
-//            if filled {
-//                context.fillPath()
-//            } else {
-                context.strokePath()
-//            }
-        }
     }
 
 }

@@ -8,25 +8,19 @@
 
 import Foundation
 
-protocol Stride : Drawable {
+protocol Stride : Plottable {
     var start: Point {get}
     var end: Point {get}
     var controls: [Point] {get}
     var length: CGFloat {get}
     
-    // draw to the end of the stride (without considering where we start from)
-    func drawTo(into context: CGContext)
+    // plot to the end of the stride (without considering where we start from)
+    func plot(into context: CGContext)
 }
 
 extension Stride {
     
-    // draw the whole Stride (include starting-point)
-    func draw(into context: CGContext) {
-        start.draw(into: context)
-        self.drawTo(into: context)
-    }
-    
-    func drawControlGraph(into context: CGContext)  {
+    func plotControlGraph(into context: CGContext)  {
         for ctrl in controls {
             context.addLine(to: ctrl.cgPoint())
         }
@@ -48,7 +42,7 @@ struct Line : Stride {
         self.length = start.distance(to: end)
     }
     
-    func drawTo(into context: CGContext) {
+    func plot(into context: CGContext) {
         context.addLine(to: end.cgPoint())
     }
     
@@ -67,7 +61,7 @@ struct QuadCurve : Stride {
         self.controls = [control]
     }
     
-    func drawTo(into context: CGContext) {
+    func plot(into context: CGContext) {
         context.addQuadCurve(to: end.cgPoint(), control: controls[0].cgPoint())
     }
     
@@ -116,7 +110,7 @@ struct CubicCurve : Stride {
         self.controls = [control1, control2]
     }
     
-    func drawTo(into context: CGContext) {
+    func plot(into context: CGContext) {
         context.addCurve(to: end.cgPoint(), control1: controls[0].cgPoint(), control2: controls[1].cgPoint())
     }
     

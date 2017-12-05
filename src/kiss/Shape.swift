@@ -8,13 +8,81 @@
 
 import Foundation
 
+// Because a Shape (which has an area it covers) cannot be drawn at a (dimensionless) point,
+// you have to define, which point of the 2-dim Shape is the one that will end up at the given position.
+// This Point is called the "AnchorPoint". It defines how a Shape should deal with a position.
+// We define it by two percentages
+struct AnchorPoint {
+    var x: CGFloat
+    var y: CGFloat
+}
+
 protocol Shape : Drawable {
     //var mode: ShapeMode {get set}
+    var elements: [Drawable] { get }
     //var size: CGSize {get}
-    //var matrix: CGAffineTransform { get }
     //var anchor: AnchorPoint { get }
-    func draw(into context: CGContext)
+    //var matrix: CGAffineTransform { get }
+
+    //func drawAt(into context: CGContext, at: Point)
 }
+
+extension Shape {
+    func draw(into context: CGContext) {
+        context.protect {
+            for e in elements {
+                e.draw(into: context)
+            }
+        }
+    }
+}
+
+struct SimpleShape : Shape {
+    let elements: [Drawable]
+    let size: CGSize
+    let anchor: AnchorPoint
+    let matrix: CGAffineTransform
+    
+    init(by path: Path) {
+        self.elements = [path]
+        self.size = CGSize(width: 1.0, height: 1.0)
+        self.anchor = AnchorPoint(x:0.5, y:0.5)
+        self.matrix = CGAffineTransform.identity
+    }
+ 
+    func drawAt(into context: CGContext, at: Point) {
+        
+    }
+}
+
+//func drawBox(into context: CGContext) {
+//
+//    let BoxSize: CGFloat = 4.0
+//
+//    context.protect {
+//        let rect = CGRect(x: self.x - BoxSize / 2.0,
+//                          y: self.y - BoxSize / 2.0,
+//                          width: BoxSize, height: BoxSize)
+//        context.addEllipse(in: rect)
+//        //color.set()
+//
+//        //            if filled {
+//        //                context.fillPath()
+//        //            } else {
+//        context.strokePath()
+//        //            }
+//    }
+//}
+//
+//
+
+//struct Box: Shape {
+//
+//}
+
+
+
+
 
 //
 //

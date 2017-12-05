@@ -36,11 +36,12 @@ import Cocoa
 
 let drawingArea = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 667.0)
 
-var scene = Scene(by: SinglePath(by: CubicCurve(start: Point(x:17.0, y:400.0),
-                                                end: Point(x:375.0, y:20.0),
-                                                control1: Point(x: 130.0, y: 475.0),
-                                                control2: Point(x: 150.0, y:271.0)))
-                                .line(to: Point(x:20.0, y:20.0)))
+var scene = Scene(by: Path(by: CubicCurve(start: Point(x:17.0, y:400.0),
+                                          end: Point(x:375.0, y:20.0),
+                                          control1: Point(x: 130.0, y: 475.0),
+                                          control2: Point(x: 150.0, y:271.0)), stylus: DarkStylus())
+                                .line(to: Point(x:50.0, y:20.0))
+                                .line(to: Point(x:17.0, y:380.0)))
 
 
 class MasterView: NSView {

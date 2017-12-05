@@ -104,15 +104,18 @@ I will use Xcode 9 and Swift 4 (i never programmed something in Swift before - s
 ~~The most simple thing we can do is giving the window a certain background-color and provide means to change it.~~
 Turns out that color is a complicated thing. And the already started second step ("displaying a symbol") is not a "second" but more a "tenth" step, because dealing with fonts and glyphs ain't easy either!
 
-So we start anew with the following abstractions:
+So we start anew.
 
-First, we have define our "primitive elements" of our system, which we will name **drawables** (didn't find a better term).
+And because we are on macOS, we already have CG ("CoreGraphics"), which defines our given "primitives" and the means of combination.
+So the first thing we have to do is: Getting rid of all things starting with "CG". It's not that I don't like CoreGraphics (i think it's great, and what it does it does very well). But CG is a vendor-specific library, essentially made to draw things on a screen. It's not made to support higher-order concepts like the **lenght of a path**, **square angles** or a **bisectrix**.
+
+First, we have define new "primitive elements". which we may call **drawables** (didn't find a better term).
 These elements have no properties besides beeing drawables.
 
-The frist abstraction will be a **stride**. This abstraction introduces properties like a "start", "end" and "length".
+Then there may be a **stride**, which introduces properties like a "start", "end" and "length".
 
-The we'll be able to forma a **path** ("paths are made by walking").
-At this level we will strat to talk about "colors", "path-width" and "filling".
+Then we'll be able to form a **path** ("paths are made by walking").
+At this level we will start to talk about "colors", "path-width" and "filling".
 
 And after that we will build **shapes** out of paths.
 Shapes will introduce a  projection-matrix - a kind of a "geometry".
