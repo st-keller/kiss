@@ -86,9 +86,9 @@ struct SimpleShape : Shape {
 
 //
 //
-////  Drawable     -> Stride          -> Path                   -> Shape
+////  Sketchabe     -> Line          -> Path                   -> Shape
 ////
-////  draw()          startPos           startPos                  size
+////  sketchTo()      startPos           startPos                  size
 ////                  endPos             endPos                    anchorPoint
 ////                  length             length                    matrix (coordinate-System)
 ////                  size               size

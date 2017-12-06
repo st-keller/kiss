@@ -21,7 +21,7 @@ extension Number {
 
 }
 
-infix operator **
+infix operator ^
 
 //A Number between 0 and 1
 class Fraction {
@@ -35,7 +35,10 @@ class Fraction {
         self.value = temp
     }
 
-
+    static prefix func ! (fraction: Fraction) -> Fraction {
+        return Fraction(1.0 - fraction.value) // "inversion"
+    }
+    
     static prefix func - (fraction: Fraction) -> Fraction {
         return fraction //cannot be negative!
     }
@@ -56,7 +59,7 @@ class Fraction {
         return left.value * right
     }
     
-    static func ** (left: Fraction, right: Int) -> Number {
+    static func ^ (left: Fraction, right: Int) -> Number {
         return pow(left.value, Number(right))
     }
 

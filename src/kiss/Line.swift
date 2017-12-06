@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Stride : Sketch {
+protocol Line : Sketch {
     var from: Position {get}
     var to: Position {get}
     var controls: [Position] {get}
@@ -18,7 +18,7 @@ protocol Stride : Sketch {
     func sketchTo(on canvas: Canvas)
 }
 
-struct Line : Stride {
+struct LineSegment : Line {
 
     let from: Position
     let to: Position
@@ -32,12 +32,12 @@ struct Line : Stride {
     }
     
     func sketchTo(on canvas: Canvas) {
-        canvas.addLine(to: to)
+        canvas.addLineSegment(to: to)
     }
     
 }
 
-struct QuadCurve : Stride {
+struct QuadCurve : Line {
     
     let from: Position
     let to: Position
@@ -76,15 +76,15 @@ struct QuadCurve : Stride {
     private func quadCurveValue(t: Fraction, p0: Number, p1: Number, c1: Number) -> Number {
         var value: Number = 0.0
         // (1-t)^2 * p0 + 2 * (1-t) * t * c1 + t^2 * p1
-        value += pow(1-t, 2) * p0
-        value += 2 * (1-t) * t * c1
-        value += (t**2) * p1
+        value += ((!t)^2) * p0
+        value += 2 * (!t) * t * c1
+        value += (t^2) * p1
         return value
     }
 
 }
 
-struct CubicCurve : Stride {
+struct CubicCurve : Line {
 
     let from: Position
     let to: Position
@@ -123,10 +123,10 @@ struct CubicCurve : Stride {
     private func cubicCurveValue(t: Fraction, p0: Number, c1: Number, c2: Number, p1: Number) -> Number {
         var value: Number = 0.0
         // (1-t)^3 * p0 + 3 * (1-t)^2 * t * c1 + 3 * (1-t) * t^2 * c2 + t^3 * p1
-        value += pow(1-t, 3) * p0
-        value += 3 * pow(1-t, 2) * t * c1
-        value += 3 * (1-t) * (t**2) * c2
-        value += (t**3) * p1
+        value += ((!t)^3) * p0
+        value += 3 * ((!t)^2) * t * c1
+        value += 3 * (!t) * (t^2) * c2
+        value += (t^3) * p1
         return value
     }
 

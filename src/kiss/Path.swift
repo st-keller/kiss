@@ -9,17 +9,17 @@
 import Foundation
 
 struct Path: Sketch {
-    let elements: [Stride]
+    let elements: [Line]
     let from: Position
     let to: Position
     let length: Number
 
-    init(by stride: Stride) {
-        self.init(elements: [stride], from: stride.from, to: stride.to, length: stride.length)
+    init(by line: Line) {
+        self.init(elements: [line], from: line.from, to: line.to, length: line.length)
     }
     
     func line(to: Position) -> Path {
-        return add(Line(from: self.to, to: to))
+        return add(LineSegment(from: self.to, to: to))
     }
     
     func quadCurve(to: Position, control: Position) -> Path {
@@ -46,13 +46,13 @@ struct Path: Sketch {
 //        return vertices
 //    }
     
-    private func add(_ stride: Stride) -> Path {
-        var strides = self.elements
-        strides.append(stride)
-        return Path(elements: strides, from: self.from, to: stride.to, length: self.length + stride.length)
+    private func add(_ line: Line) -> Path {
+        var lines = self.elements
+        lines.append(line)
+        return Path(elements: lines, from: self.from, to: line.to, length: self.length + line.length)
     }
 
-    private init(elements: [Stride], from: Position, to: Position, length: Number) {
+    private init(elements: [Line], from: Position, to: Position, length: Number) {
         self.elements = elements
         self.from = from
         self.to = to

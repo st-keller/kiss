@@ -22,7 +22,7 @@ protocol Canvas {
     func protect(_ drawStuff : () -> Void)
     
     func move(to: Position)
-    func addLine(to: Position)
+    func addLineSegment(to: Position)
     func addQuadCurve(to: Position, control: Position)
     func addCubicCurve(to: Position, control1: Position, control2: Position)
     
@@ -42,7 +42,7 @@ extension CGContext : Canvas {
         self.move(to: to.cgPoint() )
     }
 
-    func addLine(to: Position) {
+    func addLineSegment(to: Position) {
         self.addLine(to: to.cgPoint() )
     }
 
