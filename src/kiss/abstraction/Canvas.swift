@@ -26,8 +26,8 @@ protocol Canvas {
     func addQuadCurve(to: Position, control: Position)
     func addCubicCurve(to: Position, control1: Position, control2: Position)
     
-    func strokePath(with: Stylus)
-    //func fillPath(with: Stylus)
+    func strokePath(with: Pen)
+    //func fillPath(with: Pen)
 }
 
 extension CGContext : Canvas {
@@ -54,10 +54,10 @@ extension CGContext : Canvas {
         self.addCurve(to: to.cgPoint(), control1: control1.cgPoint(), control2: control2.cgPoint() )
     }
 
-    func strokePath(with stylus: Stylus) {
-        if (stylus.linePattern != nil) { self.setLineDash(phase: 0.0, lengths: stylus.linePattern!) }
-        if (stylus.lineColor != nil) { self.setStrokeColor(stylus.lineColor!) }
-        self.setLineWidth(stylus.lineWidth)
+    func strokePath(with pen: Pen) {
+        if (pen.linePattern != nil) { self.setLineDash(phase: 0.0, lengths: pen.linePattern!) }
+        if (pen.lineColor != nil) { self.setStrokeColor(pen.lineColor!) }
+        self.setLineWidth(pen.lineWidth)
         self.strokePath()
     }
 

@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol Stride : Sketchable {
+protocol Stride : Sketch {
     var from: Position {get}
     var to: Position {get}
     var controls: [Position] {get}
     var length: Number {get}
     
     // sketch to the end of the stride (without considering where we start from)
-    func sketch(on canvas: Canvas)
+    func sketchTo(on canvas: Canvas)
 }
 
 struct Line : Stride {
@@ -31,7 +31,7 @@ struct Line : Stride {
         self.length = from.distance(to: to)
     }
     
-    func sketch(on canvas: Canvas) {
+    func sketchTo(on canvas: Canvas) {
         canvas.addLine(to: to)
     }
     
@@ -50,7 +50,7 @@ struct QuadCurve : Stride {
         self.controls = [control]
     }
     
-    func sketch(on canvas: Canvas) {
+    func sketchTo(on canvas: Canvas) {
         canvas.addQuadCurve(to: to, control: controls[0])
     }
     
@@ -80,10 +80,8 @@ struct QuadCurve : Stride {
         value += 2 * (1-t) * t * c1
         value += (t**2) * p1
         return value
-        
     }
-    
-    
+
 }
 
 struct CubicCurve : Stride {
@@ -99,7 +97,7 @@ struct CubicCurve : Stride {
         self.controls = [control1, control2]
     }
     
-    func sketch(on canvas: Canvas) {
+    func sketchTo(on canvas: Canvas) {
         canvas.addCubicCurve(to: to, control1: controls[0], control2: controls[1])
     }
     

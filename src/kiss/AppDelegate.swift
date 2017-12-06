@@ -39,7 +39,7 @@ let drawingArea = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 667.0)
 var scene = Scene(by: Path(by: CubicCurve(from: Position(x:17.0, y:400.0),
                                           to: Position(x:375.0, y:20.0),
                                           control1: Position(x: 130.0, y: 475.0),
-                                          control2: Position(x: 150.0, y:271.0)), stylus: DarkStylus())
+                                          control2: Position(x: 150.0, y:271.0)))
                                 .line(to: Position(x:50.0, y:20.0))
                                 .line(to: Position(x:17.0, y:380.0)))
 
@@ -71,7 +71,7 @@ class MasterView: NSView {
     override func draw(_ bounds: CGRect) {
         let canvas = (NSGraphicsContext.current)!.cgContext
         canvas.protect {
-            scene.draw(on: canvas)
+            DarkPen().draw(scene, on: canvas)
         }
     }
     //var draw: (CGContext)->() = { _ in () }

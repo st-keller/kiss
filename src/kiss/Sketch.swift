@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol Sketchable {
-    func sketch(on canvas: Canvas)
+protocol Sketch {
+    func sketchTo(on canvas: Canvas)
 }
 
-struct Position : Sketchable {
+struct Position : Sketch {
     let x: Number
     let y: Number
     
@@ -27,7 +27,7 @@ struct Position : Sketchable {
         return hypot(distX, distY) //eqiv. to "sqrt(distX * distX + distY * distY)"
     }
 
-    func sketch(on canvas: Canvas) {
+    func sketchTo(on canvas: Canvas) {
         canvas.move(to: self)
     }
 

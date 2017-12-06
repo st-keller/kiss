@@ -8,15 +8,14 @@
 
 import Foundation
 
-struct Path: Sketchable {
+struct Path: Sketch {
     let elements: [Stride]
     let from: Position
     let to: Position
     let length: Number
 
-    init(by stride: Stride, stylus: Stylus) {
-        self.init(elements: [stride], from: stride.from, to: stride.to,// stylus: stylus,
-                  length: stride.length)
+    init(by stride: Stride) {
+        self.init(elements: [stride], from: stride.from, to: stride.to, length: stride.length)
     }
     
     func line(to: Position) -> Path {
@@ -31,64 +30,70 @@ struct Path: Sketchable {
         return add(CubicCurve(from: self.to, to: to, control1: control1, control2: control2))
     }
 
-    func sketch(on canvas: Canvas) {
+    func sketchTo(on canvas: Canvas) {
         canvas.move(to: elements[0].from)
         for e in elements {
-            e.sketch(on: canvas)
+            e.sketchTo(on: canvas)
         }
     }
-    
-    func controlPath() -> Path {
-//        func plotControlGraph(on canvas: Canvas)  {
-//            for ctrl in controls {
-//                canvas.addLine(to: ctrl)
-//            }
-//            canvas.addLine(to: to)
-//        }
-    }
-    
-//    func draw(on canvas: Canvas) {
-////        canvas.protect {
-////            canvas.move(to: elements[0].from)
-////            for e in elements {
-////                e.plotControlGraph(on: canvas)
-////            }
-////            DottedLightStylus().draw(on: canvas)
-////        }
-//
-//        DarkStylus().draw(self, on: canvas)
-//
-//        //        context.protect {
-//        //            elements[0].start.drawBox(into: context)
-//        //            for e in elements {
-//        //                e.end.drawBox(into: context)
-//        //            }
-//        //        }
-//
-//    }
 
+//    func getVertices(withControls: Bool = false) -> [Position] {
+//        var vertices: [Position] = [elements[0].from]
+//        for e in elements {
+//            if (withControls) { for c in e.controls { vertices.append(c) } }
+//            vertices.append(e.to)
+//        }
+//        return vertices
+//    }
+    
     private func add(_ stride: Stride) -> Path {
         var strides = self.elements
         strides.append(stride)
-        return Path(elements: strides,
-                    from: self.from, to: stride.to, //stylus: self.stylus,
-                          length: self.length + stride.length)
+        return Path(elements: strides, from: self.from, to: stride.to, length: self.length + stride.length)
     }
 
-    private init(elements: [Stride], from: Position, to: Position, // stylus: Stylus,
-                 length: Number) {
+    private init(elements: [Stride], from: Position, to: Position, length: Number) {
         self.elements = elements
         self.from = from
         self.to = to
         self.length = length
-        
-        //self.stylus = stylus
     }
     
 
 }
 
 
+
+
+
+//    func controlPath() -> Path {
+////        func plotControlGraph(on canvas: Canvas)  {
+////            for ctrl in controls {
+////                canvas.addLine(to: ctrl)
+////            }
+////            canvas.addLine(to: to)
+////        }
+//    }
+//
+////    func draw(on canvas: Canvas) {
+//////        canvas.protect {
+//////            canvas.move(to: elements[0].from)
+//////            for e in elements {
+//////                e.plotControlGraph(on: canvas)
+//////            }
+//////            DottedLightStylus().draw(on: canvas)
+//////        }
+////
+////        DarkStylus().draw(self, on: canvas)
+////
+////        //        context.protect {
+////        //            elements[0].start.drawBox(into: context)
+////        //            for e in elements {
+////        //                e.end.drawBox(into: context)
+////        //            }
+////        //        }
+////
+////    }
 
 
 //var mode: ShapeMode
