@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Line : Sketch {
+protocol Curve : Sketchable {
     var from: Position {get}
     var to: Position {get}
     var controls: [Position] {get}
@@ -18,7 +18,7 @@ protocol Line : Sketch {
     func sketchTo(on canvas: Canvas)
 }
 
-struct LineSegment : Line {
+struct Line : Curve {
 
     let from: Position
     let to: Position
@@ -32,12 +32,12 @@ struct LineSegment : Line {
     }
     
     func sketchTo(on canvas: Canvas) {
-        canvas.addLineSegment(to: to)
+        canvas.addLine(to: to)
     }
     
 }
 
-struct QuadCurve : Line {
+struct QuadCurve : Curve {
     
     let from: Position
     let to: Position
@@ -84,7 +84,7 @@ struct QuadCurve : Line {
 
 }
 
-struct CubicCurve : Line {
+struct CubicCurve : Curve {
 
     let from: Position
     let to: Position

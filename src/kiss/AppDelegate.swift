@@ -71,7 +71,7 @@ class MasterView: NSView {
     override func draw(_ bounds: CGRect) {
         let canvas = (NSGraphicsContext.current)!.cgContext
         canvas.protect {
-            DarkPen().draw(scene, on: canvas)
+            scene.draw(on: canvas)
         }
     }
     //var draw: (CGContext)->() = { _ in () }

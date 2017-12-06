@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol Sketch {
+protocol Sketchable {
     func sketchTo(on canvas: Canvas)
 }
 
-struct Position : Sketch {
+struct Position : Sketchable {
     let x: Number
     let y: Number
     

@@ -8,18 +8,23 @@
 
 import Foundation
 
-struct Path: Sketch {
-    let elements: [Line]
+// to draw something you have to have a notion of what to draw, a pen and a canvas to draw on
+protocol Drawable {
+    func draw(with pen: Pen, on canvas: Canvas)
+}
+
+struct Path: Sketchable, Drawable {
+    let curves: [Curve]
     let from: Position
     let to: Position
     let length: Number
 
-    init(by line: Line) {
-        self.init(elements: [line], from: line.from, to: line.to, length: line.length)
+    init(by curve: Curve) {
+        self.init(curves: [curve], from: curve.from, to: curve.to, length: curve.length)
     }
     
     func line(to: Position) -> Path {
-        return add(LineSegment(from: self.to, to: to))
+        return add(Line(from: self.to, to: to))
     }
     
     func quadCurve(to: Position, control: Position) -> Path {
@@ -31,9 +36,16 @@ struct Path: Sketch {
     }
 
     func sketchTo(on canvas: Canvas) {
-        canvas.move(to: elements[0].from)
-        for e in elements {
-            e.sketchTo(on: canvas)
+        for c in curves {
+            c.sketchTo(on: canvas)
+        }
+    }
+    
+    func draw(with pen: Pen, on canvas: Canvas) {
+        canvas.protect {
+            curves[0].from.sketchTo(on: canvas)
+            self.sketchTo(on: canvas)
+            canvas.strokePath(with: pen)
         }
     }
 
@@ -46,14 +58,14 @@ struct Path: Sketch {
 //        return vertices
 //    }
     
-    private func add(_ line: Line) -> Path {
-        var lines = self.elements
-        lines.append(line)
-        return Path(elements: lines, from: self.from, to: line.to, length: self.length + line.length)
+    private func add(_ curve: Curve) -> Path {
+        var curves = self.curves
+        curves.append(curve)
+        return Path(curves: curves, from: self.from, to: curve.to, length: self.length + curve.length)
     }
 
-    private init(elements: [Line], from: Position, to: Position, length: Number) {
-        self.elements = elements
+    private init(curves: [Curve], from: Position, to: Position, length: Number) {
+        self.curves = curves
         self.from = from
         self.to = to
         self.length = length
