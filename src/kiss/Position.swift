@@ -1,5 +1,5 @@
 //
-//  Drawable.swift
+//  Position.swift
 //  kiss
 //
 //  Created by Stefan Keller on 02.12.17.
@@ -12,7 +12,8 @@ protocol Sketchable {
     func sketchTo(on canvas: Canvas)
 }
 
-struct Position : Sketchable {
+struct Position : Sketchable, Selectable {
+    internal var selected: Bool = false
     let x: Number
     let y: Number
     

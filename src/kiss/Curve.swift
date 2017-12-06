@@ -1,5 +1,5 @@
 //
-//  Stride.swift
+//  Curve.swift
 //  kiss
 //
 //  Created by Stefan Keller on 02.12.17.
