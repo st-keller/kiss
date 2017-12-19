@@ -17,23 +17,26 @@ struct AnchorPoint {
     var y: Number
 }
 
-struct Shape : Drawable {
-    let paths: [Path]
+struct Shape {
+    // abstraction for primitives and compounds (maybe a group of points, some lines, text etc.)
+    let pen: Pen
+    let drawables: [Drawable]
     let size: Size
     let anchor: AnchorPoint
     let matrix: TransformMatrix
-    
-    init(by path: Path) {
-        self.paths = [path]
+
+    init(by path: Drawable, pen: Pen) {
+        self.drawables = [path]
         self.size = Size(width: 1.0, height: 1.0)
         self.anchor = AnchorPoint(x:0.5, y:0.5)
         self.matrix = TransformMatrix.identity
+        self.pen = pen
     }
  
-    func draw(with pen: Pen, on canvas: Canvas) {
+    func draw(on canvas: Canvas) {
         canvas.protect {
-            for p in paths {
-                p.draw(with: pen, on: canvas)
+            for d in drawables {
+                d.draw(with: self.pen, on: canvas)
             }
         }
     }

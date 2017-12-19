@@ -8,58 +8,26 @@
 
 import Foundation
 
-//
-//
-////  Sketchabe    -> Curve          -> Path                   -> Shape
-////
-////  sketchTo()      startPos           startPos                  size
-////                  endPos             endPos                    anchorPoint
-////                  length             length                    matrix (coordinate-System)
-////                  size               size
-////                                     color (stroke/fill)
-////                                     strokethickness
-////
-////                  controlPoints
-////
-////
-////
-//
-//// Constraints "has to be":       example:
-//// exactely_at                    "draw point exactely at 1,2"
-//// element of                     "point A is elemente of line B"
-//
+
+
+//a scene defines - besides the decoration - places for actors
+//places may be restricted: "place for exponent", "place for everything else"
+
+//an arranger may be attached to a place:
+//it will arranges the actors if more than one actor wants to occupy a certain place
+
+//elements of the scene (actors as well as decoration) have to be selectabe by pointing at them!
+//selected elements may be "changed" (including "replacement") or deleted
+
+// a scene may define no place for actors and may be "decoration only":
+// "look - a yello circle, a black path and a (filled) green box!"
 
 struct Scene {
-    
-    //    // abstraction for primitives and compounds (maybe a group of points, some lines, text etc.)
-    //    func anchorPoint() -> [CGFloat]? // coords(n-dim)
-    //    func content() -> [Form]
-    //    func size() -> [CGFloat] //pos coords(n-dim) interpreted as dist from origin (0, ..., 0)
-    //    func matrix() -> [CGFloat]?
-    
-    // Transformation-Matrix
-    
-    // translation
-    // skew
-    // scale
-    // rotation
-    // perspective projection
-    
-    //https://www.w3.org/TR/css-transforms-1/#decomposing-a-3d-matrix
-    //Input:
-    //matrix      ; a nxn matrix for a n-1 dim transformation
-    //
-    //Output:
-    //translation ; a n-1 component vector
-    //scale       ; a n-1 component vector
-    //skew        ; skew factors XY,XZ,YZ,... represented as a n-1 component vector
-    //perspective ; a n component vector
-    //rotation    ; a n component vector (a quaternion if 3-dim space)
-    
-    var elements: [Drawable] = []
+    var decoration: [Drawable] = []
+    //var places: [Place]
     
     func draw(on canvas: Canvas) {
-        for e in elements {
+        for e in decoration {
             e.draw(with: DarkPen(), on: canvas)
         }
     }
@@ -67,42 +35,46 @@ struct Scene {
     init() {}
     
     init(by drawable: Drawable) {
-        self.elements = [drawable]
+        self.decoration = [drawable]
     }
     
-    //    mutating func add(other: Drawable) {
-    //        elements.append(other)
-    //    }
-    
-    //strokeColor
-    //lineWith
-    
-    
-    //let lightBlue = CGColor(
-    //    colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.222, 0.617, 0.976, 1.0])!
-    //context.setStrokeColor(lightBlue)
-    //context.setLineWidth(3)
-    //context.strokePath()
-    
-    //        protectGState {
-    //            context.addEllipse(in: rect)
-    //            color.set()
-    //
-    //            if filled {
-    //                context.fillPath()
-    //            } else {
-    //                context.strokePath()
-    //            }
-    //        }
-    //
-    ////        protectGState {
-    ////            context.addEllipse(in: rect)
-    ////            NSColor.black.set()
-    ////            context.strokePath()
-    ////        }
-    
-    
 }
+
+
+
+//extension BezierCurve {
+//    override func mouseDown (with event: NSEvent) {
+//        let localPoint = convert(event.locationInWindow, from: nil)
+//
+//        for (index, point) in controlPoints.enumerated() {
+//            let box = boxForPoint(point).insetBy(dx: -10.0, dy: -10.0)
+//
+//            if box.contains(localPoint) {
+//                draggingIndex = index
+//                break
+//            }
+//        }
+//    }
+//
+//    override func mouseDragged (with event: NSEvent) {
+//        guard let index = draggingIndex else { return }
+//
+//        let localPoint = convert(event.locationInWindow, from: nil)
+//
+//        controlPoints[index] = localPoint
+//        needsDisplay = true
+//    }
+//
+//
+//    override func mouseUp (with event: NSEvent) {
+//        draggingIndex = nil
+//    }
+//}
+
+
+
+
+
 
 //class SceneBuilder {
 //
@@ -287,3 +259,21 @@ struct Scene {
 ////    }
 ////}
 //
+
+
+//        protectGState {
+//            context.addEllipse(in: rect)
+//            color.set()
+//
+//            if filled {
+//                context.fillPath()
+//            } else {
+//                context.strokePath()
+//            }
+//        }
+//
+////        protectGState {
+////            context.addEllipse(in: rect)
+////            NSColor.black.set()
+////            context.strokePath()
+////        }

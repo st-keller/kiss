@@ -8,11 +8,6 @@
 
 import Foundation
 
-// to draw something you have to have a notion of what to draw, a pen and a canvas to draw on
-protocol Drawable {
-    func draw(with pen: Pen, on canvas: Canvas)
-}
-
 struct Path: Sketchable, Drawable {
     let curves: [Curve]
     let from: Position

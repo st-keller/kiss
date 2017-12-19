@@ -9,7 +9,38 @@
 import Foundation
 
 typealias Color = CGColor //another lie
+typealias ColorSpace = CGColorSpace
+
+internal func RGBCreateSpace() -> ColorSpace {
+    return CGColorSpaceCreateDeviceRGB()
+}
+internal func CMYKCreateSpace() -> ColorSpace {
+    return CGColorSpaceCreateDeviceCMYK()
+}
+internal func GrayCreateSpace() -> ColorSpace {
+    return CGColorSpaceCreateDeviceGray()
+}
+
+// Transformation-Matrix
+
+// translation
+// skew
+// scale
+// rotation
+// perspective projection
+
+//https://www.w3.org/TR/css-transforms-1/#decomposing-a-3d-matrix
+//Input:
+//matrix      ; a nxn matrix for a n-1 dim transformation
+//
+//Output:
+//translation ; a n-1 component vector
+//scale       ; a n-1 component vector
+//skew        ; skew factors XY,XZ,YZ,... represented as a n-1 component vector
+//perspective ; a n component vector
+//rotation    ; a n component vector (a quaternion if 3-dim space)
 typealias TransformMatrix = CGAffineTransform
+
 typealias Size = CGSize
 
 extension Position {

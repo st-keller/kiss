@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol Curve : Sketchable {
+// to draw something you have to have a notion of what to draw, a pen and a canvas to draw on
+protocol Drawable {
+    func draw(with pen: Pen, on canvas: Canvas)
+}
+
+protocol Curve : Sketchable, Drawable {
     var from: Position {get}
     var to: Position {get}
     var controls: [Position] {get}
@@ -16,6 +21,16 @@ protocol Curve : Sketchable {
     
     // sketch to the end of the stride (without considering where we start from)
     func sketchTo(on canvas: Canvas)
+}
+
+extension Curve {
+    func draw(with pen: Pen, on canvas: Canvas) {
+        canvas.protect {
+            self.from.sketchTo(on: canvas)
+            self.sketchTo(on: canvas)
+            canvas.strokePath(with: pen)
+        }
+    }
 }
 
 struct Line : Curve {

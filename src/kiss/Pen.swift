@@ -28,3 +28,11 @@ struct DottedLightPen : Pen {
     var linePattern: [Number]? = [ 2.0, 2.0 ]
     var fillColor: Color? = nil
 }
+
+struct LtBluePen : Pen {
+    var lineWidth: Number = 3.0
+    var lineColor: Color? =  Color(colorSpace: RGBColorSpace(), components: [0.222, 0.617, 0.976, 1.0])!
+    var linePattern: [Number]? = nil
+    var fillColor: Color? = nil
+}
+
