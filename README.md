@@ -29,7 +29,7 @@ So maybe, KISS is the most important programming principle out there.
 
 ### Why Shoud I Care?
 
-If you've read your SICP ("Structure and Interpretation of Computer Programs") book (and if you haven't you definitly [should](https://mitpress.mit.edu/sicp/)), then you already know, that there are [three elements of programming](https://mitpress.mit.edu/sicp/full-text/sicp/book/node5.html): 
+If you've read your SICP ("Structure and Interpretation of Computer Programs") book (and if you haven't you definitly [should](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html), then you already know, that there are [three elements of programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1): 
 
 - **primitive expressions**, which represent the simplest entities the language is concerned with,
 - **means of combination**, by which compound elements are built from simpler ones, and
