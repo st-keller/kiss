@@ -39,13 +39,12 @@ The most important part without any doubt is the "abstraction". An abstraction i
 
 If applied in the right way (read "not [leaky](https://en.wikipedia.org/wiki/Leaky_abstraction)"), abstractions should enable you to **"program exponentially"**: In an environment where everything you create can easily be combined with every other thing already existing (given the same abstraction-level) and where you can build a higher abstraction-Level without loosing combinability, every step you do take should help to the next step more effectivly. So it should give you an ever increasing development-speed.
 
-In short: Ensure true combineabiltity to create meaningful abstractions!
+**In short: Ensure true combineabiltity to create meaningful abstractions!**
 
-For technical progress as a whole this promise seems to hold true. But up to today this didn't work out for programming environments: Neither did I ever get this "ever increasing speed' nor did i ever find such an environment.
+For technical progress as a whole this promise seems to hold true.
+But up to today i think this didn't work out for programming environments: Neither did I ever get this "ever increasing speed' nor did i ever find an environment truly made for it. Perhaps such a thing is just impossible or to  hard to do and there is nothing to hope for.
 
-Perhaps such a thing is just impossible and there is nothing to hope for.
-
-An other explanation may be, that combineability wasn't assessed at its true worth and never taken seriously enough. Maybe the YAGNI-principle ("You Ain't Gonna Need It") worked too well and a huge amount of work towards simplicity deemed not appropriate.
+Another explanation may be, that combineability wasn't assessed at its true worth and never taken seriously enough. Maybe the YAGNI-principle ("You Ain't Gonna Need It") worked too well and a huge amount of work towards simplicity deemed not appropriate.
 
 But after all you can combine things freely if and only if you have truly simple building blocks at hand. That's exactly why we should care about simplicity!
 
