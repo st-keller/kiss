@@ -19,7 +19,7 @@ If Dijkstra was right (and who dares to object that), simplicity seems to be a "
 >
 > -- Dijkstra (1984) [On the nature of Computing Science](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html) (EWD896).
 
-> How do we convince people that in programming simplicity and clarity —in short: what mathematicians call "elegance"— are not a
+> How do we convince people that in programming simplicity and clarity — in short: what mathematicians call "elegance"— are not a
 > dispensable luxury, but a crucial matter that decides between success and failure?
 >
 > -- Dijkstra [Why is software so expensive?](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD06xx/EWD648.html) (EWD648).
